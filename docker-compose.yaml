@@ -1,0 +1,27 @@
+version: '3'
+services:
+  dart:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "80:80"
+    # Enable these volumes for development
+    # volumes:
+    #   - ./bin:/app/bin
+    #   - ./lib:/app/lib
+    #   - ./migrations:/app/migrations
+    #   - ./test:/app/test
+    links:
+      - db
+    depends_on:
+      - db
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 20102020
+    volumes:
+      - ./docker/pgdata:/var/lib/postgresql/data

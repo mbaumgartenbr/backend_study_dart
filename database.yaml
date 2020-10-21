@@ -1,0 +1,5 @@
+username: "postgres"
+password: "20102020"
+host: db
+port: 5432
+databaseName: "fave_reads"
